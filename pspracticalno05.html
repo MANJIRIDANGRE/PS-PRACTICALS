@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>PRACTICAL NO 05</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: url('pngtree.jpg') no-repeat;
+            background-size: cover;
+        }
+
+        #textContainer {
+            font-size: 10px;
+            color: red;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="textContainer">TEXT-GROWING</div>
+
+    <script>
+        const textContainer = document.getElementById('textContainer');
+        let fontSize = 10;
+        let growing = true;
+
+        function updateText() {
+            if (growing) {
+                fontSize += 1;
+                textContainer.style.fontSize = `${fontSize}px`;
+
+                if (fontSize === 50) {
+                    growing = false;
+                    textContainer.textContent = 'TEXT-SHRINKING';
+                    textContainer.style.color = 'blue';
+                }
+            }
+            else {
+                fontSize -= 1;
+                textContainer.style.fontSize = `${fontSize}px`;
+
+                if (fontSize === 5) {
+                    clearInterval(interval);
+                }
+            }
+        }
+
+        const interval = setInterval(updateText, 100);
+    </script>
+</body>
+
+</html>
